@@ -1,0 +1,70 @@
+
+<h1 class="mt-5">Selectores anidados</h1>
+<hr>
+
+<form [formGroup]="miFormualrio">
+  <!-- Selector region -->
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Continente</label>
+      <select class="form-control"
+              formControlName="region">
+        <option value="">-- Seleccione contienete --</option>
+        <option *ngFor="let region of regiones"
+                [value]="region | lowercase">
+                {{region}}
+        </option>
+
+      </select>
+    </div>
+  </div>
+
+  <!-- Selector paises -->
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Pais</label>
+      <select class="form-control"
+              formControlName="pais">
+        <option value="">-- Seleccione el pais --</option>
+        <option *ngFor="let pais of paises"
+                [value]="pais.cca3">
+                {{pais.name.common}}
+        </option>
+
+      </select>
+    </div>
+  </div>
+
+  <!-- Fronteras -->
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Fronteras</label>
+      <select class="form-control"
+              formControlName="frontera">
+        <option value="">-- Seleccione la frontera --</option>
+
+        <option *ngFor="let frontera of fronteras"
+                [value]="frontera">
+                {{frontera}}
+        </option>
+
+      </select>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <button class="btn btn-primary"
+              type="submit">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+<br>
+<h3>Formualrio</h3>
+<pre>Valid: {{miFormualrio.valid}}</pre>
+<br>
+<span>Valor Del Formualrio</span>
+<pre>{{miFormualrio.value | json}}</pre>
